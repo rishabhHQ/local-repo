@@ -1,5 +1,20 @@
-p {
+* {
+    margin: 50px;
+    padding: 25px;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: white;
+    color: black;
+}
+.box {
+    margin: 10px;
+    padding: 20px;
+    border: 1px solid black;
+}
+#darkMode:checked ~ .box {
     background-color: black;
-    color: blue;
-    box-shadow: cornflowerblue;
+    color: white;
+    transition: 200ms;
 }
