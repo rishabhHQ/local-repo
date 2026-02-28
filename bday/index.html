@@ -1,148 +1,212 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Happy Birthday To Me 🎂</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      text-align: center;
-      color: white;
-      overflow: hidden;
-    }
+<meta charset="UTF-8">
+<title>Happy Birthday To Me 🎂</title>
 
-    .card {
-      background: rgba(0, 0, 0, 0.3);
-      padding: 40px;
-      border-radius: 20px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-      backdrop-filter: blur(10px);
-    }
+<style>
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+  color: white;
+  overflow: hidden;
+}
 
-    h1 {
-      font-size: 40px;
-      margin-bottom: 10px;
-    }
+.card {
+  background: rgba(0, 0, 0, 0.3);
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+  backdrop-filter: blur(10px);
+}
 
-    button {
-      padding: 10px 20px;
-      font-size: 16px;
-      border: none;
-      border-radius: 25px;
-      cursor: pointer;
-      background: white;
-      color: #ff4b5c;
-      font-weight: bold;
-      transition: 0.3s;
-      margin-top: 15px;
-    }
+h1 { font-size: 38px; }
 
-    button:hover {
-      background: #ff4b5c;
-      color: white;
-    }
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  background: white;
+  color: #ff4b5c;
+  font-weight: bold;
+  margin: 10px;
+  transition: 0.3s;
+}
 
-    /* Cake */
-    .cake-container {
-      margin-top: 30px;
-      display: none;
-      position: relative;
-    }
+button:hover {
+  background: #ff4b5c;
+  color: white;
+}
 
-    .cake {
-      width: 120px;
-      height: 80px;
-      background: #ff4b5c;
-      border-radius: 10px 10px 20px 20px;
-      margin: auto;
-      position: relative;
-    }
+.cake-container {
+  margin-top: 30px;
+  display: none;
+  position: relative;
+}
 
-    .icing {
-      width: 120px;
-      height: 25px;
-      background: #fff;
-      border-radius: 15px;
-      position: absolute;
-      top: -15px;
-    }
+.cake {
+  width: 150px;
+  height: 90px;
+  background: #ff4b5c;
+  border-radius: 15px 15px 25px 25px;
+  margin: auto;
+  position: relative;
+}
 
-    .knife {
-      width: 100px;
-      height: 5px;
-      background: silver;
-      position: absolute;
-      top: -40px;
-      left: 10px;
-      transform: rotate(-45deg);
-      transform-origin: left;
-      opacity: 0;
-    }
+.icing {
+  width: 150px;
+  height: 30px;
+  background: white;
+  border-radius: 20px;
+  position: absolute;
+  top: -15px;
+}
 
-    @keyframes cutCake {
-      0% { transform: rotate(-45deg) translateY(0); opacity: 1; }
-      50% { transform: rotate(0deg) translateY(40px); }
-      100% { transform: rotate(0deg) translateY(60px); }
-    }
+.candle {
+  width: 10px;
+  height: 30px;
+  background: yellow;
+  position: absolute;
+  top: -45px;
+  left: 70px;
+}
 
-    .cut {
-      animation: cutCake 1.5s forwards;
-    }
+.flame {
+  width: 10px;
+  height: 15px;
+  background: orange;
+  border-radius: 50%;
+  position: absolute;
+  top: -15px;
+  left: 0;
+  animation: flicker 0.2s infinite alternate;
+}
 
-    .slice-line {
-      width: 3px;
-      height: 80px;
-      background: white;
-      position: absolute;
-      left: 58px;
-      top: 0;
-      opacity: 0;
-    }
+@keyframes flicker {
+  from { transform: scale(1); opacity: 1; }
+  to { transform: scale(1.2); opacity: 0.7; }
+}
 
-    .show-slice {
-      opacity: 1;
-      transition: 0.5s;
-    }
+.knife {
+  width: 120px;
+  height: 6px;
+  background: silver;
+  position: absolute;
+  top: -60px;
+  left: -120px;
+  transform: rotate(20deg);
+  opacity: 0;
+}
 
-  </style>
+@keyframes realisticCut {
+  0% { left: -120px; top: -60px; opacity: 1; }
+  50% { left: 40px; top: -10px; transform: rotate(0deg); }
+  100% { left: 40px; top: 50px; transform: rotate(0deg); }
+}
+
+.cut {
+  animation: realisticCut 1.5s forwards;
+}
+
+.slice-line {
+  width: 4px;
+  height: 90px;
+  background: white;
+  position: absolute;
+  left: 73px;
+  top: 0;
+  opacity: 0;
+}
+
+.show-slice { opacity: 1; }
+
+/* Confetti */
+.confetti {
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  background: red;
+  top: -10px;
+  animation: fall 3s linear forwards;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(110vh) rotate(720deg);
+  }
+}
+
+</style>
 </head>
 <body>
 
-  <div class="card">
-    <h1>🎉 Happy Birthday To Me! 🎂</h1>
-    <p>Another year older, wiser, and stronger 💪</p>
-    <button onclick="cutCake()">Cut the Cake 🎁</button>
+<div class="card">
+  <h1>🎉 Happy Birthday To Me! 🎂</h1>
+  <p>Another year older, wiser, and stronger 💪</p>
 
-    <div class="cake-container" id="cakeBox">
-      <div class="knife" id="knife"></div>
-      <div class="cake">
-        <div class="icing"></div>
-        <div class="slice-line" id="slice"></div>
+  <button onclick="showCake()">Start Celebration 🎊</button>
+  <button onclick="blowCandle()">Blow Candle 🕯️</button>
+  <button onclick="cutCake()">Cut the Cake 🔪</button>
+
+  <div class="cake-container" id="cakeBox">
+    <div class="knife" id="knife"></div>
+    <div class="cake">
+      <div class="icing"></div>
+      <div class="candle">
+        <div class="flame" id="flame"></div>
       </div>
+      <div class="slice-line" id="slice"></div>
     </div>
   </div>
+</div>
 
-  <script>
-    function cutCake() {
-      const cakeBox = document.getElementById("cakeBox");
-      const knife = document.getElementById("knife");
-      const slice = document.getElementById("slice");
+<script>
+function showCake() {
+  document.getElementById("cakeBox").style.display = "block";
+}
 
-      cakeBox.style.display = "block";
-      knife.classList.add("cut");
+function blowCandle() {
+  document.getElementById("flame").style.display = "none";
+}
 
-      setTimeout(() => {
-        slice.classList.add("show-slice");
-      }, 1000);
-    }
-  </script>
+function cutCake() {
+  const knife = document.getElementById("knife");
+  const slice = document.getElementById("slice");
+
+  knife.classList.add("cut");
+
+  setTimeout(() => {
+    slice.classList.add("show-slice");
+    launchConfetti();
+  }, 1500);
+}
+
+function launchConfetti() {
+  for (let i = 0; i < 100; i++) {
+    let conf = document.createElement("div");
+    conf.className = "confetti";
+    conf.style.left = Math.random() * window.innerWidth + "px";
+    conf.style.background = 
+      "hsl(" + Math.random() * 360 + ", 100%, 50%)";
+    conf.style.animationDuration = 
+      2 + Math.random() * 3 + "s";
+    document.body.appendChild(conf);
+
+    setTimeout(() => {
+      conf.remove();
+    }, 5000);
+  }
+}
+</script>
 
 </body>
 </html>
