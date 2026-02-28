@@ -15,6 +15,7 @@
       height: 100vh;
       text-align: center;
       color: white;
+      overflow: hidden;
     }
 
     .card {
@@ -30,11 +31,6 @@
       margin-bottom: 10px;
     }
 
-    p {
-      font-size: 20px;
-      margin-bottom: 20px;
-    }
-
     button {
       padding: 10px 20px;
       font-size: 16px;
@@ -45,6 +41,7 @@
       color: #ff4b5c;
       font-weight: bold;
       transition: 0.3s;
+      margin-top: 15px;
     }
 
     button:hover {
@@ -52,11 +49,68 @@
       color: white;
     }
 
-    .hidden-message {
-      margin-top: 20px;
-      font-size: 18px;
+    /* Cake */
+    .cake-container {
+      margin-top: 30px;
       display: none;
+      position: relative;
     }
+
+    .cake {
+      width: 120px;
+      height: 80px;
+      background: #ff4b5c;
+      border-radius: 10px 10px 20px 20px;
+      margin: auto;
+      position: relative;
+    }
+
+    .icing {
+      width: 120px;
+      height: 25px;
+      background: #fff;
+      border-radius: 15px;
+      position: absolute;
+      top: -15px;
+    }
+
+    .knife {
+      width: 100px;
+      height: 5px;
+      background: silver;
+      position: absolute;
+      top: -40px;
+      left: 10px;
+      transform: rotate(-45deg);
+      transform-origin: left;
+      opacity: 0;
+    }
+
+    @keyframes cutCake {
+      0% { transform: rotate(-45deg) translateY(0); opacity: 1; }
+      50% { transform: rotate(0deg) translateY(40px); }
+      100% { transform: rotate(0deg) translateY(60px); }
+    }
+
+    .cut {
+      animation: cutCake 1.5s forwards;
+    }
+
+    .slice-line {
+      width: 3px;
+      height: 80px;
+      background: white;
+      position: absolute;
+      left: 58px;
+      top: 0;
+      opacity: 0;
+    }
+
+    .show-slice {
+      opacity: 1;
+      transition: 0.5s;
+    }
+
   </style>
 </head>
 <body>
@@ -64,16 +118,29 @@
   <div class="card">
     <h1>🎉 Happy Birthday To Me! 🎂</h1>
     <p>Another year older, wiser, and stronger 💪</p>
-    <button onclick="showMessage()">Click for Surprise 🎁</button>
-    <div class="hidden-message" id="message">
-      I’m proud of how far I’ve come.  
-      This year is going to be amazing! 🚀✨
+    <button onclick="cutCake()">Cut the Cake 🎁</button>
+
+    <div class="cake-container" id="cakeBox">
+      <div class="knife" id="knife"></div>
+      <div class="cake">
+        <div class="icing"></div>
+        <div class="slice-line" id="slice"></div>
+      </div>
     </div>
   </div>
 
   <script>
-    function showMessage() {
-      document.getElementById("message").style.display = "block";
+    function cutCake() {
+      const cakeBox = document.getElementById("cakeBox");
+      const knife = document.getElementById("knife");
+      const slice = document.getElementById("slice");
+
+      cakeBox.style.display = "block";
+      knife.classList.add("cut");
+
+      setTimeout(() => {
+        slice.classList.add("show-slice");
+      }, 1000);
     }
   </script>
 
