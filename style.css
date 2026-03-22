@@ -1,5 +1,5 @@
 * {
-    margin: 50px;
+    /* margin: 50px; */
     padding: 25px;
 }
 
@@ -10,15 +10,17 @@ body {
 }
 .box {
     margin: 10px;
-    padding: 20px;
+    padding: 50px;
     border: 1px solid black;
 }
 .box-border {
+    border: 1px solid black;
     box-shadow: 15px 15px 0;
 }
 #darkMode:checked ~ .box {
     background-color: black;
     color: white;
     transition: 200ms;
+    /* border: 1px solid white; */
     /* box-shadow: 10px 10px 0; */
 }
